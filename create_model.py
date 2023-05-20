@@ -77,6 +77,18 @@ class TSR(Model):
     def MODEL_PATH(self):
         return self.__MODEL_PATH
 
+    @property
+    def CUR_PATH(self):
+        return self.__CUR_PATH
+
+    @property
+    def SAVE_PATH_DIR(self):
+        return self.__SAVE_PATH_DIR
+
+    @property
+    def model(self):
+        return self.__model
+
     def train_data_transformation(self, train_path):
         data = []
         labels = []
@@ -156,11 +168,6 @@ class TSR(Model):
             history = self.__model.fit(X_train, y_train, batch_size=32, epochs=TSR.__EPOCHS,
                                        validation_data=(X_test, y_test))
 
-            # accuracy
-            self.show_training_accuracy_graph(history)
-
-            # Loss
-            self.show_training_loss_graph(history)
             # Save
             self.__model.save(TSR.__MODEL_PATH)
         else:
@@ -199,7 +206,6 @@ class TSR(Model):
 
 def main():
     tsr_model = TSR()
-    tsr_model.prepare_data()
     tsr_model.train_model()
     tsr_model.test_model()
 
