@@ -1,5 +1,14 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+#working data
+Meta/
+save_data/
+Test/
+Train/
+Meta.csv
+Test.csv
+Train.csv
+
 # dependencies
 node_modules/
 .pnp
